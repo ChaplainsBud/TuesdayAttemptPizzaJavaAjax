@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Limelight&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9c2c348e64.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Pizza App</title>
+</head>
+<body>
+
+<nav>
+    <a id="logo" href="#">Tre Signori</a>
+    <a href="#">Contact Us</a>
+    <p><i class="fas fa-search"></i><input type="search" placeholder="search"></p>
+
+</nav>
+
+<main>
+    <div class="place-mat">
+        <div class="plate">
+            <div class="pizza">
+                <div class="sauce" style="visibility:hidden">
+                    <div class="cheese" style="visibility:hidden">
+                        <img id="ing1" src="#" alt="topping" style="visibility:hidden">
+                        <img id="ing2" src="#" alt="topping" style="visibility:hidden">
+                        <img id="ing3" src="#" alt="topping" style="visibility:hidden">
+                        <img id="ing4" src="#" alt="topping" style="visibility:hidden">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <aside>
+
+        <h2>Buongiorno! How would you like your pizza?</h2>
+
+        <form action="#" id="pizzaForm">
+
+            <fieldset id="form1" action="#">
+                <legend>Dough</legend>
+                <ul>
+                    <li><input id="cau" type="radio" name="dough" value="cauliflower">Cauliflower</li>
+                    <li><input id="who" type="radio" name="dough" value="whole wheat">Whole Wheat</li>
+                    <li><input id="tra" type="radio" name="dough" value="traditional">Traditional</li>
+                </ul>
+            </fieldset>
+
+            <fieldset id="form2">
+                <legend>Sauce</legend>
+                <ul>
+                    <li><input id="cur" type="radio" name="sauce" value="curry">Curry</li>
+                    <li><input id="cre" type="radio" name="sauce" value="cream">Cream</li>
+                    <li><input id="mar" type="radio" name="sauce" value="marinara">Marinara</li>
+                </ul>
+            </fieldset>
+
+            <fieldset id="form3" action="#">
+                <legend>Cheese</legend>
+                <ul>
+                    <li><input id="moz" type="radio" name="cheese" value="cheese">Mozzarella</li>
+                    <li><input id="ame" type="radio" name="cheese" value="cheese">American</li>
+                    <li><input id="pro" type="radio" name="cheese" value="cheese">Provolone</li>
+                </ul>
+            </fieldset>
+
+            <fieldset id="form4">
+                <legend>Toppings</legend>
+                <ul>
+                    <li><input id="spi" name="toppings" value="spinach" type="checkbox">Spinach</li>
+                    <li><input id="tom" name="toppings" value="tomatoes" type="checkbox">Tomatoes</li>
+                    <li><input id="bac" name="toppings" value="bacon" type="checkbox">Bacon</li>
+                    <li><input id="mus" name="toppings" value="mushrooms" type="checkbox">Mushrooms</li>
+                </ul>
+            </fieldset>
+            <legend id="price-display">Price: $5.00</legend>
+            <i class="fas fa-shopping-cart"></i>
+            <input type="submit" value="Get Pizza">
+        </form>
+    </aside>
+</main>
+<footer>
+    <p>&copy;2020 Tre Signori</p>
+    <p>Salute!</p>
+</footer>
+<script src="index.js"></script>
+</body>
+</html>
