@@ -172,19 +172,86 @@ mus.addEventListener("change", (e) => {
     }
 });
 
+
+
+
 pf.addEventListener("submit", (e)=> {
     e.preventDefault();
     console.log("form test");
-    let selected = new Array();
-    let chks = document.getElementsByTagName("INPUT");
-    for (let i = 0; i < chks.length; i++) {
-        if (chks[i].checked) {
-            selected.push(chks[i].value);
-        }
-    }
-    selected.push(pd.innerHTML);
+    // let selected = new Array();
+    // let chks = document.getElementsByTagName("INPUT");
+    // for (let i = 0; i < chks.length; i++) {
+    //     if (chks[i].checked) {
+    //         selected.push(chks[i].value);
+    //     }
+    // }
+    // selected.push(pd.innerHTML);
+    // selected.map(a => console.log(a.toString()));
+    const selected = "pizza test";
     console.log(selected);
+    sub();
 });
+
+// AJAX ADDED BELOW //
+
+function sub() {
+    // let selected = `${cau.value}, ${who.value}, ${tra.value}, ${cur.value}, ${cre.value}, ${mar.value}, ${moz.value}, ${ame.value}, ${pro.value}`;
+    // let selected = document.querySelectorAll('input:checked').length;
+
+    let selected = null;
+    if(document.getElementById('#cau').checked)
+        if(selected !=null)
+            selected = selected + ` ${cau.value}`
+        else selected = ` ${cau.value}`
+        if(document.getElementById('#who').checked)
+                if(selected !=null)
+                    selected = selected + ` ${who.value}`
+                else selected = ` ${who.value}`
+    if(document.getElementById('#tra').checked)
+        if(selected !=null)
+            selected = selected + ` ${tra.value}`
+        else selected = ` ${tra.value}`
+    if(document.getElementById('#cur').checked)
+        if(selected !=null)
+            selected = selected + ` ${cur.value}`
+        else selected = ` ${cur.value}`
+    if(document.getElementById('#mar').checked)
+        if(selected !=null)
+            selected = selected + ` ${mar.value}`
+        else selected = ` ${mar.value}`
+
+    // let cau = document.querySelector("#cau");
+    // let who = document.querySelector("#who");
+    // let tra = document.querySelector("#tra");
+    // let cur = document.querySelector("#cur");
+    // let cre = document.querySelector("#cre");
+    // let mar = document.querySelector("#mar");
+    // let moz = document.querySelector("#moz");
+    // let ame = document.querySelector("#ame");
+    // let pro = document.querySelector("#pro");
+    // let top1 = document.querySelector("#ing1");
+    // let top2 = document.querySelector("#ing2");
+    // let top3 = document.querySelector("#ing3");
+    // let top4 = document.querySelector("#ing4");
+
+
+
+
+
+
+    $.ajax({
+        type: "POST",
+        url: "/addPizzaOrder",
+        data: {
+            name: "Matt",
+            toppings: selected,
+        },
+        success:function(result){
+            console.log(result);
+        }
+    });
+}
+
 
 
 
