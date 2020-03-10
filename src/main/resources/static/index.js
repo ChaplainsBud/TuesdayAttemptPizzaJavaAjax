@@ -18,17 +18,23 @@ let top4 = document.querySelector("#ing4");
 let pd = document.querySelector("#price-display");
 let pf = document.querySelector("#pizzaForm");
 
+let toppings = null;
+
+
 let menuForm = document.querySelector("#form1");
 menuForm.addEventListener("change", (e)=> {
     e.preventDefault();
     if(cau.checked == true) {
         console.log("cauliflower");
+        toppings= "cauliflower";
         PIZZA.style.backgroundColor = "cornsilk";
     } else if (who.checked == true) {
         console.log("whole wheat");
+        toppings = toppings + " ,whole wheat";
         PIZZA.style.backgroundColor = "darkgoldenrod";
     } else if (tra.checked == true) {
         console.log("traditional");
+        toppings = toppings + " ,traditional";
         PIZZA.style.backgroundColor = "wheat";
     }
 });
@@ -45,14 +51,17 @@ menuForm2.addEventListener("change", (e)=> {
     } else if (cau.checked == true || who.checked == true || tra.checked == true) {
         if(cur.checked == true) {
             console.log("curry");
+            toppings = toppings + " ,curry";
             SAUCE.style.visibility = "visible";
             SAUCE.style.backgroundColor = "orange";
         } if (cre.checked == true) {
             console.log("cream");
+            toppings = toppings + " , cream";
             SAUCE.style.visibility = "visible";
             SAUCE.style.backgroundColor = "oldlace";
         } if (mar.checked == true) {
             console.log("marinara");
+            toppings = toppings + " ,marinara";
             SAUCE.style.visibility = "visible";
             SAUCE.style.backgroundColor = "tomato";
         }
@@ -73,14 +82,17 @@ menuForm3.addEventListener("change", (e)=> {
     } else if (cur.checked == true || cre.checked == true || mar.checked == true) {
         if(moz.checked == true) {
             console.log("mozza");
+            toppings = toppings + " ,mozzarella";
             CHEESE.style.visibility = "visible";
             CHEESE.style.backgroundColor = "lightyellow";
         } else if (ame.checked == true) {
             console.log("american");
+            toppings = toppings + " ,american";
             CHEESE.style.visibility = "visible";
             CHEESE.style.backgroundColor = "yellow";
         } else if (pro.checked == true) {
             console.log("provolone");
+            toppings = toppings + " ,provolone";
             CHEESE.style.visibility = "visible";
             CHEESE.style.backgroundColor = "bisque";
         }
@@ -127,6 +139,7 @@ menuForm4.addEventListener("change", (e)=> {
 spi.addEventListener("change", (e) => {
     if (spi.checked == true) {
         console.log("tomatoes");
+        toppings = toppings + " ,tomatoes";
         top1.style.visibility = "visible";
         top1.src = "https://res.cloudinary.com/a-name-not-already-taken/image/upload/v1583622483/spinach.png";
         // priceChanger();
@@ -139,6 +152,7 @@ spi.addEventListener("change", (e) => {
 tom.addEventListener("change", (e) => {
     if (tom.checked == true) {
         console.log("mushrooms");
+        toppings = toppings + " ,mushrooms";
         top2.style.visibility = "visible";
         top2.src = "https://res.cloudinary.com/a-name-not-already-taken/image/upload/v1583622483/tomatoes.png";
         // priceChanger();
@@ -151,11 +165,12 @@ tom.addEventListener("change", (e) => {
 bac.addEventListener("change", (e) => {
     if (bac.checked == true) {
         console.log("spinach");
+        toppings = toppings + " ,spinach";
         top3.style.visibility = "visible";
         top3.src = "https://res.cloudinary.com/a-name-not-already-taken/image/upload/v1583622483/bacon.png";
         // priceChanger();
     } else {
-        console.log("no bacon");
+        console.log("no spinach");
         top3.style.visibility = "hidden";
     }
 });
@@ -163,31 +178,29 @@ bac.addEventListener("change", (e) => {
 mus.addEventListener("change", (e) => {
     if (mus.checked == true) {
         console.log("bacon");
+        toppings = toppings + " ,bacon";
         top4.style.visibility = "visible";
         top4.src = "https://res.cloudinary.com/a-name-not-already-taken/image/upload/v1583622483/mushroom.png";
         // priceChanger();
     } else {
-        console.log("no mushrooms");
+        console.log("no bacon");
         top4.style.visibility = "hidden";
     }
 });
 
-
-
-
 pf.addEventListener("submit", (e)=> {
     e.preventDefault();
     console.log("form test");
-    // let selected = new Array();
-    // let chks = document.getElementsByTagName("INPUT");
-    // for (let i = 0; i < chks.length; i++) {
-    //     if (chks[i].checked) {
-    //         selected.push(chks[i].value);
-    //     }
-    // }
-    // selected.push(pd.innerHTML);
-    // selected.map(a => console.log(a.toString()));
-    const selected = "pizza test";
+    let selected = new Array();
+    let chks = document.getElementsByTagName("INPUT");
+    for (let i = 0; i < chks.length; i++) {
+        if (chks[i].checked) {
+            selected.push(chks[i].value);
+        }
+    }
+    selected.push(pd.innerHTML);
+    selected.map(a => console.log(a.toString()));
+    // const selected = "pizza test";
     console.log(selected);
     sub();
 });
@@ -196,29 +209,34 @@ pf.addEventListener("submit", (e)=> {
 
 function sub() {
     // let selected = `${cau.value}, ${who.value}, ${tra.value}, ${cur.value}, ${cre.value}, ${mar.value}, ${moz.value}, ${ame.value}, ${pro.value}`;
-    // let selected = document.querySelectorAll('input:checked').length;
+    // THIS WORKS FOR NUMBER let selected = document.querySelectorAll('input:checked').length;
+    // let selected = document.querySelectorAll('input:checked').value;
 
-    let selected = null;
-    if(document.getElementById('#cau').checked)
-        if(selected !=null)
-            selected = selected + ` ${cau.value}`
-        else selected = ` ${cau.value}`
-        if(document.getElementById('#who').checked)
-                if(selected !=null)
-                    selected = selected + ` ${who.value}`
-                else selected = ` ${who.value}`
-    if(document.getElementById('#tra').checked)
-        if(selected !=null)
-            selected = selected + ` ${tra.value}`
-        else selected = ` ${tra.value}`
-    if(document.getElementById('#cur').checked)
-        if(selected !=null)
-            selected = selected + ` ${cur.value}`
-        else selected = ` ${cur.value}`
-    if(document.getElementById('#mar').checked)
-        if(selected !=null)
-            selected = selected + ` ${mar.value}`
-        else selected = ` ${mar.value}`
+
+
+
+
+    // let selected = null;
+    // if(document.getElementById('#cau').checked)
+    //     if(selected !=null)
+    //         selected = selected + ` ${cau.value}`
+    //     else selected = ` ${cau.value}`
+    //     if(document.getElementById('#who').checked)
+    //             if(selected !=null)
+    //                 selected = selected + ` ${who.value}`
+    //             else selected = ` ${who.value}`
+    // if(document.getElementById('#tra').checked)
+    //     if(selected !=null)
+    //         selected = selected + ` ${tra.value}`
+    //     else selected = ` ${tra.value}`
+    // if(document.getElementById('#cur').checked)
+    //     if(selected !=null)
+    //         selected = selected + ` ${cur.value}`
+    //     else selected = ` ${cur.value}`
+    // if(document.getElementById('#mar').checked)
+    //     if(selected !=null)
+    //         selected = selected + ` ${mar.value}`
+    //     else selected = ` ${mar.value}`
 
     // let cau = document.querySelector("#cau");
     // let who = document.querySelector("#who");
@@ -244,7 +262,7 @@ function sub() {
         url: "/addPizzaOrder",
         data: {
             name: "Matt",
-            toppings: selected,
+            toppings: toppings,
         },
         success:function(result){
             console.log(result);
